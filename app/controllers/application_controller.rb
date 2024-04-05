@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
     home_index_path
   end
 
+  private
+
+  def authenticate_admin_user!
+
+  end
+
+  def current_admin_user
+
+  end
+
 end
