@@ -47,8 +47,9 @@ gem "faker"
 
 gem 'activeadmin'
 
-gem 'sassc'
+#gem 'sassc'
 
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'bootstrap'
 
 gem 'kaminari'
