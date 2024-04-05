@@ -11,6 +11,7 @@
 require 'faker'
 require 'csv'
 
+
 # Generate random products using Faker
 10.times do
   Product.create(
@@ -42,4 +43,4 @@ CSV.foreach(Rails.root.join('db', 'jewelry.csv'), headers: true) do |row|
   )
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'ishita@gmail.com', password: 'adminpass', password_confirmation: 'adminpass') if Rails.env.development?
