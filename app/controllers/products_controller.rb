@@ -20,4 +20,11 @@ class ProductsController < ApplicationController
     @category_id = params[:category]
     @products = Product.search(@keyword, @category_id).paginate(page: params[:page], per_page: 10)
   end
+
+  def add_to_cart
+    product = Product.find(params[:id])
+    session[:cart] ||= []
+    session[:cart] << product.id
+    redirect_to products_path, notice: "#{product.title} added to cart."
+  end
 end
