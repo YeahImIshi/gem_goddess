@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
       @products = Product.includes(:category).all
     end
 
-    @product = Product.find(params[:id])
+    #@product = Product.find(params[:id])
   end
   def category
     @category = Category.find(params[:category_id])
@@ -26,5 +26,12 @@ class ProductsController < ApplicationController
     session[:cart] ||= []
     session[:cart] << product.id
     redirect_to products_path, notice: "#{product.title} added to cart."
+  end
+  def show
+    @product = Product.find_by(id: params[:id])
+
+    if @product.nil?
+      redirect_to root_path, alert: "Product not found."
+    end
   end
 end

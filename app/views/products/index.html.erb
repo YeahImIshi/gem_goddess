@@ -1,6 +1,6 @@
 <%= form_tag(search_products_path, method: :get) do %>
   <%= text_field_tag :keyword, params[:keyword], placeholder: 'Enter keyword' %>
-  <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name, params[:category]), include_blank: 'All Categories' %>
+  <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :title, params[:category]), include_blank: 'All Categories' %>
   <%= submit_tag 'Search' %>
 <% end %>
 
@@ -10,6 +10,7 @@
     <%= link_to product.title, product %>: <%= number_to_currency(product.price) %>
     Category: <%= product.category.title %>
   </li>
+  <%= button_to 'Add to Cart', add_to_cart_product_path(product), method: :post %>
 <% end %>
 
 

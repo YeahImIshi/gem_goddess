@@ -3,5 +3,6 @@
 <p><%= @product.description %></p>
 <p><%= @product.category %></p>
 <p><%= number_to_currency(@product.price) %></p>
+<%= button_to 'Add to Cart', add_to_cart_product_path(@product), method: :post %>
 
 <%= link_to 'Back', request.referer || root_path %>
