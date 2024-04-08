@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   end
 get '/about', to: 'pages#about', as: 'about'
 get '/contact', to: 'pages#contact', as: 'contact'
+
+get '/search_products', to: 'products#search', as: 'search_products'
+
 #get '/categories', to: 'categories#index', as: 'categories'
 
   get '/products/category/:category_id', to: 'products#category', as: 'products_by_category'
