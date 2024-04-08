@@ -1,16 +1,8 @@
-<h1>Explore the newest collection!</h1>
+<h1>Search Results</h1>
 <%= form_tag(search_products_path, method: :get) do %>
   <%= text_field_tag :keyword, params[:keyword], placeholder: 'Enter keyword' %>
   <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :title, params[:category]), include_blank: 'All Categories' %>
   <%= submit_tag 'Search' %>
 <% end %>
-
-
-<h2>Featured Products</h2>
-<% @products.each do |product| %>
-  <div>
-    <%= link_to product.title, product %>
-    <p><%= product.description %></p>
-    <p><%= number_to_currency(product.price) %></p>
-  </div>
-<% end %>
+<%= render 'products/products_list' %>
+<%= paginate @products %>

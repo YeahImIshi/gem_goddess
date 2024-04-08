@@ -15,4 +15,10 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:category_id])
     @products = @category.products
   end
+
+  def search
+    @keyword = params[:keyword]
+    @category_id = params[:category]
+    @products = Product.search(@keyword, @category_id).paginate(page: params[:page], per_page: 10)
+  end
 end

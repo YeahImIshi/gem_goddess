@@ -1,3 +1,10 @@
+<%= form_tag(search_products_path, method: :get) do %>
+  <%= text_field_tag :keyword, params[:keyword], placeholder: 'Enter keyword' %>
+  <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name, params[:category]), include_blank: 'All Categories' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+
 <% @products.each do |product| %>
   <li>
     <%= link_to product.title, product %>: <%= number_to_currency(product.price) %>

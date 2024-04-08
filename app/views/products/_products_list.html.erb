@@ -1,0 +1,13 @@
+<% if @products.any? %>
+  <ul>
+    <% @products.each do |product| %>
+      <li>
+        <%= link_to product.title, product %>
+        <p><%= product.description %></p>
+        <p><%= number_to_currency(product.price) %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No products found.</p>
+<% end %>
