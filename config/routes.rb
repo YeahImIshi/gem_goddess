@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :categories
 
-
+  resources :products do
+    post 'add_to_cart', on: :member
+  end
+  get '/cart', to: 'shopping_carts#show'
    namespace :admin do
     get 'dashboard', to: 'dashboard#index'
   end
