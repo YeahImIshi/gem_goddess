@@ -7,8 +7,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.includes(:category).all
     end
-  end
-  def show
+
     @product = Product.find(params[:id])
   end
   def category

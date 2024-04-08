@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
   belongs_to :category
 
+  validates :title, :price, :description, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+
   def self.search(keyword, category_id)
     products = Product.all
     products = products.where('title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%") if keyword.present?

@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         validates :username, :email, presence: true
+         validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
   def admin?
     role == 'admin'
   end

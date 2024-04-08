@@ -23,5 +23,7 @@ class ApplicationController < ActionController::Base
   def current_admin_user
     current_user if current_user&.admin?
   end
+
+
 end
 
