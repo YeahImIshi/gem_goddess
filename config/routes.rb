@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
 
 
-  get 'admin_dashboard', to: 'admin_dashboard#index'
+   namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
+  end
 
   get '/products/category/:category_id', to: 'products#category', as: 'products_by_category'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

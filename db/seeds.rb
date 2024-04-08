@@ -43,4 +43,4 @@ CSV.foreach(Rails.root.join('db', 'jewelry.csv'), headers: true) do |row|
   )
 end
 
-AdminUser.create!(email: 'ishitaadmin@gmail.com', password: 'adminpass', password_confirmation: 'adminpass', role: 'admin') if Rails.env.development?
+AdminUser.create!(email: 'adminishita@gmail.com', password: 'adminpass', password_confirmation: 'adminpass', role: 'admin') if Rails.env.development?

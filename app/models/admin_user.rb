@@ -3,6 +3,7 @@ class AdminUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
+  validates :email, uniqueness: true
 
-         enum role: { admin: 0, user: 1 }
+         enum role: { admin: 'admin', user: 'user' }
 end

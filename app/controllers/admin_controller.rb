@@ -7,7 +7,7 @@ class AdminController < ApplicationController
     unless current_user && current_user.admin?
       redirect_to root_path, alert: 'Access denied.'
     else
-      redirect_to admin_dashboard_path
+      redirect_to admin_root_path
   end
 end
 end
