@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_up_path_for(resource)
-    home_index_path
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(AdminUser)
+      admin_dashboard_path
+    else
+      root_path
+    end
   end
+
 
   private
 
@@ -18,5 +23,4 @@ class ApplicationController < ActionController::Base
   def current_admin_user
     current_user if current_user&.admin?
   end
-
 end

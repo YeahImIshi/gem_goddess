@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :products, only: [:index, :show]
-  root 'home#index'
+
+
+  get 'admin_dashboard', to: 'admin_dashboard#index'
 
   get '/products/category/:category_id', to: 'products#category', as: 'products_by_category'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,4 +17,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'home#index'
 end
