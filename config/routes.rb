@@ -9,6 +9,9 @@ Rails.application.routes.draw do
    namespace :admin do
     get 'dashboard', to: 'dashboard#index'
   end
+  get '/about', to: 'pages#about', as: 'about'
+get '/contact', to: 'pages#contact', as: 'contact'
+get '/categories', to: 'categories#index', as: 'categories'
 
   get '/products/category/:category_id', to: 'products#category', as: 'products_by_category'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
