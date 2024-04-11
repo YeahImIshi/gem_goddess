@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :category
+  has_many :shopping_cart_items
 
   validates :title, :price, :description, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }

@@ -13,15 +13,15 @@ require 'csv'
 
 
 # Generate random products using Faker
-#10.times do
- # Product.create(
-  #  title: Faker::Commerce.product_name,
-   # price: Faker::Commerce.price(range: 10.0..500.0),
-    #description: Faker::Lorem.sentence,
-    #tags: Faker::Lorem.words(number: 3).join(", "),
-    #image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['jewelry', 'fashion'])
-  #)
-#end
+100.times do
+ Product.create(
+  title: Faker::Commerce.product_name,
+   price: Faker::Commerce.price(range: 10.0..500.0),
+    description: Faker::Lorem.sentence,
+    tags: Faker::Lorem.words(number: 3).join(", "),
+    image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['jewelry', 'fashion'])
+  )
+end
 
 # Import products from CSV
 CSV.foreach(Rails.root.join('db', 'jewelry.csv'), headers: true) do |row|

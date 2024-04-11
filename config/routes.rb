@@ -6,17 +6,21 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :categories
 
+  resources :shopping_cart, only: [:show, :update]
+  delete 'remove_from_cart/:product_id', to: 'shopping_cart#remove', as: 'remove_from_cart'
+  put 'update_quantity_cart/:product_id', to: 'shopping_cart#update_quantity', as: 'update_quantity_cart'
+
   resources :products do
     post 'add_to_cart', on: :member
   end
   get '/cart', to: 'shopping_carts#show'
-   namespace :admin do
-    get 'dashboard', to: 'dashboard#index'
-  end
-get '/about', to: 'pages#about', as: 'about'
-get '/contact', to: 'pages#contact', as: 'contact'
+  #namespace :admin do
+   # get 'admin_dashboard', to: 'dashboard#index'
+  #end
+  get '/about', to: 'pages#about', as: 'about'
+  get '/contact', to: 'pages#contact', as: 'contact'
 
-get '/search_products', to: 'products#search', as: 'search_products'
+  get '/search_products', to: 'products#search', as: 'search_products'
 
 #get '/categories', to: 'categories#index', as: 'categories'
 
