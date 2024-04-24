@@ -11,4 +11,13 @@ class Product < ApplicationRecord
     products = products.where(category_id: category_id) if category_id.present?
     products
   end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "shopping_cart_items"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["category", "category_id", "created_at", "description", "id", "id_value", "image_url", "price", "product_id", "tags", "title", "updated_at", "item_id", "cart_id", "product_id", "quantity"]
+  end
+
 end

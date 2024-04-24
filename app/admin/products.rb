@@ -16,4 +16,11 @@ ActiveAdmin.register Product do
     end
     f.actions
   end
+
+  controller do
+    def scoped_collection
+      super.page(params[:page]).per(10)
+    end
+  end
+
 end
