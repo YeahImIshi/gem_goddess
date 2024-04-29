@@ -3,16 +3,16 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :products, only: [:index, :show]
-  resources :categories
-
-  resources :shopping_cart, only: [:show, :update]
-  delete 'remove_from_cart/:product_id', to: 'shopping_cart#remove', as: 'remove_from_cart'
-  put 'update_quantity_cart/:product_id', to: 'shopping_cart#update_quantity', as: 'update_quantity_cart'
-
-  resources :products do
+  resources :products, only: [:index, :show] do
     post 'add_to_cart', on: :member
   end
+
+  resources :categories
+
+  resources :shopping_carts, only: [:show, :update]
+  delete 'remove_from_cart/:product_id', to: 'shopping_carts#remove', as: 'remove_from_cart'
+  put 'update_quantity_cart/:product_id', to: 'shopping_carts#update_quantity', as: 'update_quantity_cart'
+
   get '/cart', to: 'shopping_carts#show'
   #namespace :admin do
    # get 'admin_dashboard', to: 'dashboard#index'

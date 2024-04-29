@@ -1,8 +1,10 @@
-# app/controllers/shopping_carts_controller.rb
+
 class ShoppingCartsController < ApplicationController
+  before_action :authenticate_user!
   def show
-    @cart_products = Product.where(id: session[:cart])
+    @cart_products = current_user.shopping_cart_items.includes(:product)
   end
+
   def update
     product = Product.find(params[:product_id])
     quantity = params[:quantity].to_i
@@ -16,3 +18,4 @@ class ShoppingCartsController < ApplicationController
     redirect_to cart_path, notice: "Product removed from cart."
   end
 end
+
