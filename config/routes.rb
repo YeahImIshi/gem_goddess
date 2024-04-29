@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   #namespace :admin do
    # get 'admin_dashboard', to: 'dashboard#index'
   #end
+
+  resource :contact, only: [:show]
+  resource :about, only: [:show]
+
   get '/about', to: 'pages#about', as: 'about'
   get '/contact', to: 'pages#contact', as: 'contact'
 
