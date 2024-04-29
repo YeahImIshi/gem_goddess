@@ -1,5 +1,12 @@
 class User < ApplicationRecord
   has_many :shopping_cart_items
+  has_one :cart, class_name: 'ShoppingCart'
+
+  after_create :create_cart_if_missing
+
+  def create_cart_if_missing
+    create_cart unless cart
+  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
